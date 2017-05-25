@@ -1,0 +1,71 @@
+create main object ========>  rest : Angular2RestApi;
+refer it as this.rest everywhere
+
+set base url in main component.
+obj.setBaseUrl("http url");
+
+
+to fetch a single record eg. a user with id 34
+this.rest.one("users" ,34).get().subscribe(res => this.user=res.json());
+//will do /GET to baseurl/users/34
+
+to fetch all records
+this.rest.all("users").get().subscribe(res => this.users=res.json());
+//will dod /GET to baseurl/users/
+
+
+
+//to create a new user
+let user= {
+	"username" : "Vijay",
+	"age" : 23,
+	"gender" : M
+};
+
+this.rest.all("users").post(user).subscribe(res => 
+	//res.json() contains info whether a new user created or not
+);
+// will do /POST to baseurl/users/
+
+
+to update a user information
+this.rest.all("users").put(user).subscribe();
+//user is user object with id of the user
+eg .
+let user = {
+	"id" : 23,
+	"username" : ...
+	...
+};
+//will to /PUT to baseurl/users/
+
+
+//delete
+this.rest.one("users",1).delete().subscribe();
+
+
+
+
+
+//Http headers
+settings  : Angular2RestApiSetings; 
+this.settings.setHttpHeader();
+getHttpHeader();
+removeHttpHeader();
+
+
+
+//get all records courses of a user with id=23
+//this.rest.one("users",23).all("courses").get().subscribe(
+	response => this.courses = response.json()
+);
+
+
+//parameters
+let users = this.rest.all("users");
+//do many things with "users" now !
+//fetch all users with age greater than 34
+users.setParameter("filter", ["age","gt",34]);
+users.get(); //thats it!!
+
+

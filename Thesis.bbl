@@ -1,0 +1,79 @@
+\begin{thebibliography}{10}
+
+\bibitem{angulario}
+Angular Team.
+\newblock Angular framework for single page applications.
+\newblock {\em Retrieved from https://angular.io}, Mar, 2015.
+
+\bibitem{rewritten}
+Shahbaz Sherif.
+\newblock Key differnces in angularjs and angular 2.
+\newblock {\em Retrieved from
+  https://www.technicaldiary.com/difference-angular-1-vs-angular-2}, July,
+  2016.
+
+\bibitem{faster}
+Angular University.
+\newblock Angularjs vs angular - an in-depth comparison.
+\newblock {\em Retrieved from
+  http://blog.angular-university.io/introduction-to-angular2-the-main-goals},
+  May, 2015.
+
+\bibitem{rest}
+World Wide~Web Consortium.
+\newblock Relationship to the world wide web and rest architectures.
+\newblock {\em Retrieved from
+  https://www.w3.org/TR/2004/NOTE-ws-arch-20040211/\#relwwwrest}, 11 February
+  2004.
+
+\bibitem{stateless}
+Tech.groups.yahoo.com.
+\newblock {\em Retrieved from
+  http://tech.groups.yahoo.com/group/rest-discuss/message/5841}, 2013-02-07.
+
+\bibitem{soap}
+SOAP Simple Object~Access Protocol.
+\newblock Key differnces in angularjs and angular 2.
+\newblock {\em Retrieved from
+  https://tools.ietf.org/html/draft-box-http-soap-00}, September 1999.
+
+\bibitem{restnaming}
+RestApiTutorial.com.
+\newblock Rest api - resource naming.
+\newblock {\em Retrieved from
+  http://www.restapitutorial.com/lessons/restfulresourcenaming.html}, Jan,
+  2010.
+
+\bibitem{angular-nested-resource}
+Roy Peled.
+\newblock Angular module which helps with restful models.
+\newblock {\em Retrieved from
+  http://ngmodules.org/modules/angular-nested-resource}, Mar, 2014.
+
+\bibitem{ngx-restangular}
+2muchcoffeecom.
+\newblock Angular 2+ service that simplifies common get, post, delete, and
+  update.
+\newblock {\em Retrieved from
+  https://github.com/2muchcoffeecom/ngx-restangular}, Aug, 2016.
+
+\bibitem{angular2-rest}
+Paldom.
+\newblock Angular2 http client to consume restful services. built with
+  typescript.
+\newblock {\em Retrieved from https://github.com/Paldom/angular2-rest}, Apr,
+  2015.
+
+\bibitem{ng2-rest-api}
+Ranjithprabhu K.
+\newblock A rest api template for all api consumption.
+\newblock {\em Retrieved from https://github.com/ranjithprabhuk/ng2-rest-api},
+  Nov, 2016.
+
+\bibitem{http}
+James; Mogul Jeffrey C.; Nielsen Henrik Frystyk; Masinter Larry; Leach Paul J.;
+  Berners-Lee~Tim Fielding, Roy T.;~Gettys.
+\newblock Hypertext transfer protocol – http/1.1.
+\newblock {\em RFC 2616}, July, 2016.
+
+\end{thebibliography}

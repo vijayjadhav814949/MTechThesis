@@ -1,0 +1,17 @@
+\chapter{Literature Review}
+\pagestyle{fancy}
+\fancyhead[LO]{\itshape\nouppercase{\rightmark}}
+
+\hspace{0.2in} Angular Web Development framework is becoming popular among Web developers everyday. Hundreds of third party modules (also called as libraries or packages) exists for Angular framework. All Angular modules are available as open--source modules on www.npmjs.org. Angular itself is dependent on NodeJS and Node Package Manager (npm), that is, Angular is distributed as a npm package. Users can install angular by following npm command (npm install angular). Similiar way Angular modules are hosted on www.npmjs.org for others to install and use, and also these packages are installed in the same way (npm install `packagename'). This chapter takes survey at similar modules to the one implented by this thesis work, and examines the differences and drawbacks here.
+
+\section{Related Work}
+
+\hspace{0.2in}angular-nested-resource \cite{angular-nested-resource} is an angular module that helps working with RESTful models. It does not have any major dependencies and does not make use of ladash library like other many other libraries do. 
+This implementation focuses on the very first version of Angular, that is, AngularJS. Modules implemented for AngularJS and Angular are completly incompatible with each other, as they have a very different architectural styles of their implementation.
+angular-nested-resource have implementation based in nested objects. It uses Promises to handle the asynchronus data. \\
+
+\hspace{0.2in} Another popular implementation to  RESTful Web Services for Angular is ngx-restangular \cite{ngx-restangular}. This project is the follow-up of the original Restangular project.ngx-restangular does not support AngularJS, It only supports Angular 2+ versions. This module simplifies HTTP's common methods such as  GET, POST, DELETE, and UPDATE requests. This module can be used for RESTful apps. This module changed its name from ng2-restangular to ngx-restangular because of implementation of Semantic Versioning by Angular's Core Team. NPM (Node Package Manager) name has also changed, and you can install latest version of  this module by execuing npm install ngx-restangular in a command window.\\
+
+\hspace{0.2in} angular2-rest\cite{angular2-rest} is another Angular 2 HTTP client to access the RESTful Web Services. It is implemented in Typescript. This is yet production ready, and it is still in experimental phase (apha phase).\\
+
+\hspace{0.2in} ng2-rest-api\cite{ng2-rest-api} is a HTTP client to consume RESTful Web Services implemented for Angular 2+ versions. It is built on Angular2/http module in the Angular library with TypeScript. It is a  REST API template for all api consumption in an angular application. It's an Angular2 rest template for all CRUD operations (Create, Read, Update and Delete operations). This module has not been published to npm (node package manager), so its only available to  download on githhub, after downloding include it in your service folder. This module does not supports nesting of object, thus have only API of only few functions. Functions available are get(), create(), update(), delete() for HTTP's GET, POST, PUT, DELETE operations respectively. This module has a drawback that you can not configure application wide settings. HTTP headers field has to be set every time a request is made. angular-rest-service (proposed by this thesis work) overcomes this problem by providing application wide settings.

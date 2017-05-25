@@ -1,0 +1,2 @@
+Angular ( or Angular 2) is a popular framework used for modern simple page web application (SPAs) developement. Angular 2 is a completely re-written version of Angularjs.[ref]
+Angular can be used to build aplications which are copatible across all platforms. Angular is a modular frameworks, similar features can be grouped together into a module. A single Angular application contains at least one module. This project aims to design a interface for Angular 2 to consume RESTful web services. 

@@ -1,0 +1,12 @@
+installing module into your project
+
+Adding Rest module to your project
+
+functions calls
+
+example : design one concrete app to rest on it
+
+Settings/Configuring the module
+
+Security/Authorization Techniques
+

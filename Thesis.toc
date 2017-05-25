@@ -1,0 +1,26 @@
+\contentsline {chapter}{Abstract}{iv}{dummy.2}
+\vspace {0.1em}
+\contentsline {chapter}{List of Figures}{vi}{dummy.4}
+\contentsline {chapter}{List of Tables}{vii}{dummy.6}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.8}
+\contentsline {section}{\numberline {1.1}What is Angular?}{1}{section.9}
+\contentsline {subsection}{\numberline {1.1.1}Versions of Angular}{1}{subsection.10}
+\contentsline {subsection}{\numberline {1.1.2}Differences in AngularJS and Angular 2+}{1}{subsection.11}
+\contentsline {section}{\numberline {1.2}REST}{2}{section.12}
+\contentsline {subsection}{\numberline {1.2.1}REST Semantics}{3}{subsection.13}
+\contentsline {section}{\numberline {1.3}HTTP}{5}{section.16}
+\contentsline {subsection}{\numberline {1.3.1}HTTP Methods}{5}{subsection.17}
+\contentsline {section}{\numberline {1.4}Observables}{8}{section.24}
+\contentsline {section}{\numberline {1.5}Data Formats used }{9}{section.33}
+\contentsline {subsection}{\numberline {1.5.1}JSON}{9}{subsection.34}
+\contentsline {chapter}{\numberline {2}Literature Review}{11}{chapter.35}
+\contentsline {section}{\numberline {2.1}Related Work}{11}{section.36}
+\contentsline {chapter}{\numberline {3}Proposed Work}{13}{chapter.37}
+\contentsline {section}{\numberline {3.1}Problem Statement}{13}{section.38}
+\contentsline {section}{\numberline {3.2}Setting Up}{13}{section.39}
+\contentsline {subsection}{\numberline {3.2.1}Installing angular-rest-service}{14}{subsection.42}
+\contentsline {subsection}{\numberline {3.2.2}Importing angular-rest-service to your project}{14}{subsection.47}
+\contentsline {section}{\numberline {3.3}angular-rest-service API}{16}{section.83}
+\contentsline {section}{\numberline {3.4}Module Configuration}{18}{section.114}
+\contentsline {section}{\numberline {3.5}Example application}{20}{section.115}
+\contentsline {chapter}{\numberline {4}Conclusion}{23}{chapter.167}

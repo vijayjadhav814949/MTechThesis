@@ -1,0 +1,24 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: Thesis.aux
+The style file: unsrt.bst
+Database file #1: bib.bib
+Repeated entry---line 72 of file bib.bib
+ : @article{rewritten
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 78 of file bib.bib
+ : @article{rewritten
+ :                   ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "hhsa"
+Warning--empty author in stateless
+Too many commas in name 1 of "Fielding, Roy T.; Gettys, James; Mogul, Jeffrey C.; Nielsen, Henrik Frystyk; Masinter, Larry; Leach, Paul J.; Berners-Lee, Tim" for entry http
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "Fielding, Roy T.; Gettys, James; Mogul, Jeffrey C.; Nielsen, Henrik Frystyk; Masinter, Larry; Leach, Paul J.; Berners-Lee, Tim" for entry http
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "Fielding, Roy T.; Gettys, James; Mogul, Jeffrey C.; Nielsen, Henrik Frystyk; Masinter, Larry; Leach, Paul J.; Berners-Lee, Tim" for entry http
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "Fielding, Roy T.; Gettys, James; Mogul, Jeffrey C.; Nielsen, Henrik Frystyk; Masinter, Larry; Leach, Paul J.; Berners-Lee, Tim" for entry http
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "Fielding, Roy T.; Gettys, James; Mogul, Jeffrey C.; Nielsen, Henrik Frystyk; Masinter, Larry; Leach, Paul J.; Berners-Lee, Tim" for entry http
+while executing---line 944 of file unsrt.bst
+(There were 7 error messages)

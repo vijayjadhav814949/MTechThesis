@@ -1,0 +1,41 @@
+\chapter{Problem Statement}
+\pagestyle{fancy}
+\fancyhead[LO]{\itshape\nouppercase{\rightmark}}
+
+
+
+The scheduling problem can be defined as follows:\\
+\hspace{0.2in}Find an optimal solution to schedule a given set of tasks,  T= \{$T_1$,$\ T_2$ , \ldots{}.,$\ T_n$\} to a given
+set of machines  M= \{$M_{1,}M_2$,\ldots{}.,$M_m$\}  subject to a predefined set of constraints and measurements.\\
+For instance, one of the widely used measurements for the scheduling problem is the so-called  makespan $C_{max}(s) $ which is defined as, the completion time of the last task.\\
+Mathematically, the scheduling problem is to minimize	$ f(s)=C_{max}(s) $\\
+where, $s$ is a candidate solution, and letting $C_j$ denote the completion time of job $j$,
+$ C_{max}(s)=max_j C_j $ is the completion time of the last job.\\
+\hspace{0.2in}Several studies attempted to define the scheduling problem on cloud systems as the workflow problem, which can be further classified into two levels:
+\begin{enumerate}
+	\item service-level (platform layer and static scheduling)
+	\item task-level (unified resource layer and dynamic scheduling).
+\end{enumerate}
+
+\hspace{0.2in} Different from grid computing, the user can install their programs on the virtual machines (VMs) and determine how to execute their programs on the cloud computing system. For these reasons, although both grid computing and cloud computing are heterogeneous, the key issues they face are very different. A good example is the cost and latency of data transfer on these environments. That is why some studies added more considerations to their definitions of scheduling on cloud. For instance, a couple of studies used directed acyclic graph (DAG) to define the scheduling problem on cloud. The basic idea is to use the vertices of a DAG to represent a set of tasks and the edges between the vertices to represent the dependencies between the tasks.\\
+ Then, the scheduling problem on cloud can be formulated for the solutions as follows,
+
+\[Minimize f(s)=C_{max} (s)+\sum_{i=1}^{n}\sum_{j=1}^{m} C_{ij}\]
+
+Subject to
+\[C_{max} (s)\leq U(s),\]
+\[C(s) \leq B(s)\]
+
+
+\begin{tabbing}
+\hspace*{2cm}\=\hspace*{3cm}\= \kill
+ $ f(s) $\> \textrm{: objective function} \\
+ $C_{max}(s)$ \> \textrm{: completion time of the last job (also called makespan)}\\
+ $n $ \> \textrm{: number of tasks} \\
+ $m $ \> \textrm{: number of machines}\\
+ $C_{ij}$\> \textrm{: cost of processing the $i^{th}$ task on the $j^{th}$ machine}\\
+ $U(s)$ \>\textrm{: number of overdue tasks}\\
+ $C(s) = \sum_{j=1}^{m}C_{ij} $\>\hspace{0.4in}\textrm{ : total cost of s}\\
+ $B(s)$\>\textrm{: restriction on the budget for the tasks of s.} 
+
+\end{tabbing}

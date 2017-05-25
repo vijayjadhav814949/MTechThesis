@@ -1,0 +1,329 @@
+\chapter{Proposed Work}
+\pagestyle{fancy}
+\fancyhead[LO]{\itshape\nouppercase{\rightmark}}
+
+
+
+%%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\section{Problem Statement}
+
+\hspace{0.2in}This project aims to design and implement a module for Angular to consume RESTful Web Services.
+It makes use of Angular's http module to make request over HTTP to a RESTful Web Service and uses HTTP's standard methods such as GET, PUT, POST etc. This module, called hereafter `\textbf{angular-rest-service}', is made available as a npm package on www.npmjs.org.
+
+
+%%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\section{Setting Up}
+
+\hspace{0.2in}Angular applications and Angular core itself are dependent on functionalities provided by third parties packages. To install Angular, NodeJS and Node Package Manager (npm) are required. Once NodeJS and npm are installed, Angular can be installed by using npm command line tools. `npm install' requires an active Internet connection. Please set proxy using `npm config' if you are behind proxy.\\
+\\
+To install angular, execute the following command.
+\begin{lstlisting}[language=command]
+	 npm install angular
+\end{lstlisting}
+	  
+
+\subsection{Installing angular-rest-service}
+
+\hspace{0.2in}Once npm is installed, This module can be installed by executing the following command from the command line (or Terminal in case of Linux). Before executing the following command, first go to the root directory of your Angular project.
+	
+\begin{lstlisting}[language=command]
+	npm install angular-rest-service
+\end{lstlisting}
+	
+\hspace{0.2in}After successful execution of the above command, This module should be available into the node module directory. Above command only makes the module accessible to the current project. To make it accessible from anywhere, use the -g or --global flag.
+	
+\begin{lstlisting}[language=command]
+	npm install angular-rest-service -g
+\end{lstlisting}
+	
+\hspace{0.2in}The -g parameter indicates the this module should be installed into global modules directory and should be accessible to all projects.	
+	
+
+		
+%%:::::::::::::::::::::::::::::::::::::::::::
+\subsection{Importing angular-rest-service to your project}
+
+\hspace{0.2in}Import AngularRestServiceModule, AngularRestService and \\AngularRestServiceSettings into your root module. Once imported, add the AngularRestServiceModule to the import's array of the @NgModule metadata. This way all the features from the AngularRestService will accessible to the entire root module of the Angular Project. Add AngularRestService and AngularRestServiceSettings to the providers array of @NgModule metadata.
+	
+\hspace{0.2in}The updated root module file should look like this:
+	
+	
+\begin{lstlisting}[language=Typescript]
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+
+import {AngularRestServiceModule, AngularRestService, AngularRestServiceSettings} from 'angular-rest-service';
+
+@NgModule({
+  declarations: [   AppComponent  ],
+  imports: [
+    BrowserModule,
+    AngularRestServiceModule
+  ],
+  providers: [AngularRestService, AngularRestServiceSettings],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+\end{lstlisting}
+
+
+
+\hspace{0.2in}Before any request  is made to a resource on the server machine, the base URL of the server machine need to be set.
+This Base URL is used for all requests except where custom base URL for the resource is specified. To set the base URL , import the AngularRestServiceSettings into the main component of root module.  Add the AngularRestServiceSettings to the constructor of the component.
+
+\hspace{0.2in}The updated main component should look like this:
+
+
+\begin{lstlisting}[language=Typescript]
+import { Component, OnInit } from '@angular/core';
+import { AngularRestServiceSettings } from 'angular-rest-service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+
+	constructor( private settings: AngularRestServiceSettings) { }
+
+  	ngOnInit() {
+		this.settings.setBaseUrl("http://base/url/api");
+  	}
+}
+\end{lstlisting}
+
+
+
+%%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\section{angular-rest-service API}
+
+\hspace{0.2in}angular-rest-service module defines a simple inteface, to perform CRUD operations (Create, Read, Update, Delete) on the resources which are exposed via REST. This functions can be accessed by a singleton object which is available to all components that imports AngularRestServiceModule. 
+	
+	
+\begin{enumerate}
+
+\item{
+	\textbf{list}(name: string, params?: any): any \\
+	This function takes a resource name (eg. users, books, cources, categories etc.)  and some optional parameters. This functions return an object (a list of users or list or books etc.) on which you can perform CRUD operations. To perform this operations, functions such as doGet() or doPost() made available, which uses corresponding HTTP method to perform neccessary operations on these resources.
+	
+\begin{lstlisting}[language=Typescript]
+this.rest.list('users').doGet().subscribe(result=> 
+	/* process the result here */ );
+\end{lstlisting}
+	
+}
+\item{
+	\textbf{filterById}(id: number): any \\
+	\hspace{0.2in} filterById() can be used after list(), which is useful when whole list needs to be filtered by given id. E.g. If among all users, a single user with id 23 needs to fetched, following single line code will do the job.
+	
+\begin{lstlisting}[language=Typescript]
+this.rest.list('users').filterById(23).doGet().subscribe(result=> 
+	/* process the result here */ );
+\end{lstlisting}
+	
+}
+\item{
+	\textbf{filterById}(ids: Array): any \\
+	\hspace{0.2in} Sometimes fetching several users is required. Overloaded filterById() also takes an array of numbers as input, which are a list of ids of users that needs to be fetched. E.g. If among all users, users with ids 23, 45, 12 needs to fetched, following single line code will do the job.
+	
+\begin{lstlisting}[language=Typescript]
+this.rest.list('users').filterById( [23, 45, 12] )
+	.doGet().subscribe(result=> /* process the result here */);
+\end{lstlisting}
+	
+}
+
+\item{
+	\textbf{doGet}(): Observable $<$any$>$ \\
+	The doGet() function performs a GET request and returns an Observable. As fetching data on a network can take time, these methods needs to asynchronous. Observable are a popular way to handle asynchronous events in Javascript. Observable have a subscribe() method with user defined function as parameter, this function is called as soon as a response received.
+}
+\item{
+	\textbf{doPost}(data  : string): Observable $<$any$>$ \\
+		The doPost() function performs a POST request and returns an Observable.For doPost(), a single parameter is required which is a JSON object. This JSON object's format should adhere to the server's RESTful Web Service specification. Once this function is succesfully executed, a new record will be created on the server.
+}
+\item{
+	\textbf{doPut}(data : string ): Observable $<$any$>$ \\
+	The doPut() function performs a PUT request and returns an Observable. For doPut(), a single parameter is required which is a JSON object. An id property with a valid value is mandatory to indentify a resource on the server. This JSON object's format should adhere to the server's RESTful Web Service specification. Once this function is succesfully executed, a record with specified id will be upadated on the server.
+}
+\item{
+	\textbf{doDelete}(): Observable $<$any$>$ \\
+	The doDelete() function performs a DELETE request and returns an Observable. The URL should locate a valid resource. After the successful execution of this function, returned Observable contains informations about whether the resource successfully deleted or not.
+	
+}	
+\item{
+	\textbf{doPatch}(data : string ): Observable $<$any$>$ \\
+	
+}
+\item{ \textbf{addHttpHeader}(name : string, value : string) \\
+	Use this function, when there is need to add a http header field in the current request. It should be a valid header field, and the user must have access the set a perticular header field. Some header fields (e.g.  `Accept-Encoding') are not allowed to be set. Only browsers can set these fields. A list of headers fields is maintained for each request. This function adds this header field to the list of already existing header fields. If the header field with same name already exists, its value is overwritten, else a new key--value pair is created. Apart from this, there a global headers list stored in the AngularRestServiceSettings's object. These headers fields are included in each request to the server. If this function specifies a header field that already exists in the global headers, this local value is used instead for the current request.
+}
+\item{ \textbf{removeHttpHeader}(name : string, value : string) \\
+	This function removes a header field from the list of headers fields,  if it already exists. A separate copy of header fields is maintained for each request. 
+}
+\item{
+	\textbf{setParameter}(name : string, value : any) \\
+	The setParamter() is used to add a key--value pair in the request url. This function sets the parameter only for the current request. 
+	For example:
+
+\begin{lstlisting}[language=Typescript]
+let users = this.rest.list("users");
+users.setParameter("transform", 1);
+    
+//makes a /GET request to baseurl/users?transform=1
+users.doGet().subscribe(
+     response => {
+        this.userlist = response.json().users;
+     } 
+   );
+\end{lstlisting}
+If user want a parameter to be included in every request, another function is defined in the AngularRestServiceSettings.  
+
+}
+
+
+
+\end{enumerate}
+
+	
+	
+	
+	
+	
+%%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\section{Module Configuration}
+
+
+	Module configuraton focuses on changing the behavior of the angular-rest-service. Sometimes the module needs to to congured, e.g. If every request should contaian authentication information in the HTTP header, such information can be set in the AngularRestServiceSettings. Module Configuration contains some functions that used to set application wide settings. AngularRestServiceSettings contains functions that are required to change the behavior of other functions, e.g setting the base url to which all calls should be made or a url paramter that every should made should contain. 
+	
+\begin{itemize}
+
+\item{ \textbf{setBaseUrl}(base : string) \\
+	All request made to a RESTful Web Service have a unique URL or can also be called as Base URL which is common prefix for all resource addresses. The setBaselUrl() function can be used to set the base url which is used in all calls (except a few where Base URL is specified itself as a function parameter) to a RESTful Web Service. \\
+	eg. http://abc.xyz/rest/api/ is valid base url.
+
+}
+\item{ \textbf{getBaseUrl}() : string \\
+	This function returns the currently set Base url. If the Base URL is not set, it simply returns `undefined'.
+}
+\item{ \textbf{addHttpHeader}(name : string, value : string) \\
+	Use this function, when there is need to add a http header field for all requests. It should be a valid header field, and the user must have access the set a perticular header field. Some header fields (e.g.  `Accept-Encoding') are not allowed to be set. Only browsers can set these fields. A list of headers fields is maintained which are included in all requests. This function adds this header field (key--value pair) to the list of already existing global header fields. If the header field with same name already exists, its value is overwritten, else a new key--value pair is created. Apart from this, there a local headers list for each request. These headers fields are included in each request to the server. If this function specifies a header field that already exists in the local headers, this local value is used instead for the current request.
+}
+\item{ \textbf{removeHttpHeader}(name : string, value : string) \\
+	This function removes a header field from the list of global headers fields,  if it already exists. Once this key--value pair is removed from this list, request made after this will not contain this key-value.
+}
+\item{ \textbf{setGlobalParameter}(name : string, value : string) \\
+	Global parameters are a way to maintain a list of key--value pairs, which are required in every request. For example, If request to the server needs to have an api--key to authenticate the user, it will cumbersome to independently add a parameter spearatly for every request. To solve this issue, just set the parameter using this function. Once parameter is successfully set, all request will include the this parameter. 
+}
+
+\end{itemize}
+
+	
+
+
+
+
+
+
+
+
+%%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\section{Example application}
+
+\hspace{0.2in}Assume we have a server machine exposing RESTful Web Services. We want to fetch a list of all users. The following example shows how to get list of all users and set it to a local variable inside the Angular component. 
+Import the angular-rest-service module and complete the basic set up (as explained in previous sections) to start using this module in your Angular project.
+
+\hspace{0.2in}This example makes a GET request to /users expects a response in json format. This response is converted into a json object by using json() method. 
+
+\begin{lstlisting}[language=Typescript]
+import { Component, OnInit } from '@angular/core';
+import { AngularRestService } from 'angular-rest-service';
+
+@Component({
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
+})
+export class UserListComponent implements OnInit {
+  userlist;
+
+  constructor(private rest: AngularRestService) { }
+
+  ngOnInit() {
+    let users = this.rest.list("users").doGet().subscribe(
+      response => {
+        this.userlist = response.json();
+      } 
+    );
+  }
+}
+\end{lstlisting}
+
+Following example makes a GET request to /users/23.
+
+\begin{lstlisting}[language=Typescript]
+let user = this.rest.list("users").filterById(23).doGet().subscribe(
+      response => {
+        //response.json() hold the user information with id 23;
+      });
+\end{lstlisting}
+
+POST method is used to create new resources on the server.\\
+Following example makes a POST request to /users. The doPost() fuction expects a single parameter in json format.
+\begin{lstlisting}[language=Typescript]
+let user= {
+	"username" : "Vijay",
+	"age" : 23,
+	"gender" : ''Male''
+};
+
+this.rest.list("users").doPost(user).subscribe(res => 
+	//res.json() contains info whether a new user created or not
+);
+\end{lstlisting}
+
+
+To update a user information : \\
+This will to PUT to /users \\
+Note that id property is neccessary and should be a number.
+\begin{lstlisting}[language=Typescript]
+
+let user = {
+	"id" : 23,
+	"username" : ''Mayur''
+	''gender'' : ''Male''
+};
+this.rest.list("users").doPut(user).subscribe(res => 
+	//res.json() contains info whether a user udpated or not
+);
+\end{lstlisting}
+
+
+To delete a user : \\
+It makes DELETE request to /users/23.
+ \begin{lstlisting}[language=Typescript]
+this.rest.list("users").filterById(23).doDelete().subscribe(res => 
+	//res.json() contains info whether the user with id deleted or not
+);
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+%%:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+%\section{Handling Authentication}
+
+
+
+
+
+
+
